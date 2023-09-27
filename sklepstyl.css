@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    /* text-align: center; */
+    background-color: #00CFF5;
+    height: 100%;
+    width: 100%;
+    
+    
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #00CFF5;
+
+}
+.one{
+    flex: 1;
+    align-items: space-between;
+}
+.one h2{
+    justify-content: flex-end;
+    align-items: center;
+}
+#sekcja
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 50px;
+}
+#produkty
+{
+    /* height: 100%; */
+    border: black solid 1px;
+}
+#zakupy
+{
+    text-align: center;
+}

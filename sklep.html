@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sklepstyl.css"> 
+    <title>Glazura</title>
+</head>
+<body>
+    <header>
+        <div class="one">
+            <!-- <p id="zegar2"> </p> -->
+        </div>
+        <div class="one">
+            <h1>Glazura w rozsądnych cenach</h1>
+        </div>
+        <div class="one">
+        </div>
+    </header>
+    <section id="sekcja">
+        <!-- <p id="zegar"></p> -->
+        <form id="zakupy">
+            <label for="prod">Wybierz produkty</label>
+            <select name="prod" id="produkty">
+                <option value="Terakota">Terakota</option>
+                <option value="Gres">Gres</option>
+                <option value="Kamień naturalny">Kamień naturalny</option>
+                <option value="Kompozyt">Kompozyt</option>
+                <option value="Klej">Klej do glazury Atlas</option>
+            </select>
+            <br>
+            <label for="dlg">Podaj ile metrów kwadratowych/opakowań kleju</label>
+            <input type="number" name="dlg" id="wiela">
+            <br>
+            <button id="potw" type="submit">Potwierdź</button>
+        </form>
+        </section>
+    <footer>
+        <p>made by bk</p>
+    </footer>
+</body>
+<script>
+    const zegar = document.querySelector("#zegar")
+    const zegar2 = document.querySelector("#zegar2")
+    const dodaj = document.querySelector("#potw")
+    const teraz = new Date();
+    const promocja = new Date("2023-10-30 12:00:00");
+    function odliczanie ()
+    {
+        const ter = teraz.getTime()
+        const docz = promocja.getTime()
+        const zost = docz - ter; 
+        let dni = Math.floor(zost / (1000 * 60 * 60 * 24))
+        const godzin = Math.floor((zost) / (1000 * 60 * 60)) - dni * 24;
+        const minuty = Math.floor((zost) / (1000 * 60)) - (dni * 24 * 60) - (godzin * 60);
+        zegar.innerHTML = `Zostało ${dni} dni promocji, ${godzin} godzin i ${minuty} minut `
+
+    }
+    function zeit(){
+        zegar2.innerHTML = `Czas: ${teraz.getHours( )}:${teraz.getMinutes()}:${teraz.getSeconds()}`
+    }
+    // setInterval(odliczanie(),1000);
+    // setInterval(zeit(),1000);
+    dodaj.addEventListener('click',function(evt)
+        {
+            evt.preventDefault();
+        })
+</script>
+</html>
