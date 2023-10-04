@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sklepstyl.css"> 
+    <title>Glazura</title>
+</head>
+<body>
+    <header>
+        <div class="one">
+            <p id="zegar2"> </p>
+        </div>
+        <div class="one">
+            <h1>Glazura w rozsądnych cenach</h1>
+        </div>
+        <div class="one">
+            
+        </div>
+    </header>
+    <p id="zegar"></p>
+    <section id="sekcja">
+        
+        <section id="spaghet">
+        <form id="zakupy">
+
+                <fieldset id="polezestaw">
+                    <label for="prod">Wybierz produkty</label>
+                    <select name="prod" id="produkty" onchange="decyzja();">
+                        <option value="Terakota">Terakota</option>
+                        <option value="Gres">Gres</option>
+                        <option value="Kamień naturalny">Kamień naturalny</option>
+                        <option value="Kompozyt">Kompozyt</option>
+                        <option value="Klej">Klej do glazury Atlas</option>
+                    </select>
+                    <br>
+                    <label for="dlg">Podaj ile metrów kwadratowych/opakowań kleju</label>
+                    <input type="number" name="dlg" id="wiela" min="0">
+                    <br>
+                    <button id="potw" type="submit">Potwierdź</button>
+                </fieldset>
+            </section>
+        </form>
+        <div id="prezent">
+            <p  id="wybrano"></p>
+            <img src="" height="350px" width="350px" id="obraz"> </img>
+            <p id="koszta"></p>
+        </div>
+        <div id="kalkulator">
+            <p>Lista przedmiotów:</p>
+            <ol id="koszyk"></ol>
+            <p id="suma"></p>
+        </div>
+    </section>
+    <footer>
+        <p>made by bk</p>
+    </footer>
+</body>
+<script>
+    const zegar = document.querySelector("#zegar")
+    const zegar2 = document.querySelector("#zegar2")
+    const dodaj = document.querySelector("#potw")
+    const koszyk = document.querySelector("#koszyk")
+    const cena = [];
+    // 100, 120, 140, 90, 50
+    cena["Terakota"] = 100;
+    cena["Gres"] = 120;
+    cena["Kamień naturalny"] = 140;
+    cena["Kompozyt"] = 90;
+    cena["Klej"] = 50;
+    function decyzja()
+    {
+        const sklep = document.querySelector("#produkty").value;
+        const obraz = document.querySelector("#obraz");
+        let koszta = document.querySelector("#koszta");
+        let wyb = document.querySelector("#wybrano");
+        switch (sklep) {
+    case "Terakota":
+    wyb.innerHTML = "Terakota";
+    obraz.src = "Terakota.jpg";
+    koszta.innerHTML = `cena: ${cena["Terakota"]} zł za m^3`;
+      break;
+
+    case "Gres":
+    wyb.innerHTML = "Gres";
+    obraz.src = "gres.jpg";
+    koszta.innerHTML = `cena: ${cena["Gres"]} zł za m^3`;
+      break;
+
+    case "Kamień naturalny":
+    wyb.innerHTML = "Kamień naturalny";
+    obraz.src = "natural.jpg";
+    koszta.innerHTML = `cena: ${cena["Kamień naturalny"]} zł za m^3`;
+      break;
+
+    case "Kompozyt":
+    wyb.innerHTML = "Kompozyt";
+    obraz.src = "kompozyt.jpg";
+    koszta.innerHTML = `cena: ${cena["Kompozyt"]} zł za m^3`;
+      break;
+    case "Klej":
+    wyb.innerHTML = "Klej do glazury Atlas";
+    obraz.src = "atlas.png";
+    koszta.innerHTML = `cena: ${cena["Klej"]} zł za opakowanie 25kg`;
+      break;
+    default:
+    wyb.innerHTML = " ";
+        }
+  }
+                const teraz = new Date();
+    const promocja = new Date("2023-10-30 12:00:00");
+    function odliczanie ()
+    {
+        const ter = teraz.getTime()
+        const docz = promocja.getTime()
+        const zost = docz - ter; 
+        let dni = Math.floor(zost / (1000 * 60 * 60 * 24))
+        const godzin = Math.floor((zost) / (1000 * 60 * 60)) - dni * 24;
+        const minuty = Math.floor((zost) / (1000 * 60)) - (dni * 24 * 60) - (godzin * 60);
+        zegar.innerHTML = `Do końca promocji zostało: ${dni} dni, ${godzin} godzin i ${minuty} minut `
+
+    }
+    function zeit(){
+        let teraz2 = new Date();
+        zegar2.innerHTML = `Czas: ${teraz2.getHours()}:${teraz2.getMinutes()}:${teraz2.getSeconds()}`;
+    }
+    let suma = 0;
+    function dodać(){
+        let sklep = document.querySelector("#produkty").value;
+        let wiela = document.querySelector("#wiela").value;
+        const sum = document.querySelector("#suma");
+        let pric = wiela * cena[sklep]
+        koszyk.innerHTML += (sklep + " w ilości " + wiela + ", " + pric + "zł" +"<br>");
+         
+        suma = suma + pric;
+        sum.innerHTML ="Koszt całkowity: " + suma + "zł";
+    }
+    setInterval(zeit,1000);
+    setInterval(odliczanie,1000);
+    decyzja();
+    dodaj.addEventListener('click',function(evt)
+        {
+            evt.preventDefault();
+            dodać();
+        })
+    // setInterval(decyzja,1000)
+</script>
+</html>

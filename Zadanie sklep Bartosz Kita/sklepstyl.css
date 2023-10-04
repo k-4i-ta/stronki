@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    /* text-align: center; */
+    background-color: #DB9F2E;
+    height: 100%;
+    width: 100%;
+    
+    
+}
+#zegar
+{
+    text-align: center;
+    font-size: large;
+    color: #E85025;
+}
+body
+{
+    background-color: #FAF7AC;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #DB9F2E;
+
+}
+.one{
+    flex: 1;
+    align-items: space-between;
+}
+.one h2{
+    justify-content: flex-end;
+    align-items: center;
+}
+/* #sekcja
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: row;
+    align-content:flex-start;
+    margin: 50px;
+    border:solid black 5px;
+} */
+#sekcja
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 200px 200px;
+    
+}
+#zakupy
+{
+    /* text-align: center; */
+    /* border: solid black 1px; */
+}
+#spaghet
+{
+    grid-column: 2;
+    grid-row: 1 / 2;
+    border: black 1px solid;
+    margin: 5px 5px 0px 0px;
+    
+
+}
+#polezestaw
+{
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 40px;
+    padding: 10px;
+    /* width: 200px; */
+}
+#prezent
+{
+    /* background-color: blue; */
+    text-align: center;
+    border: black 1px solid;
+    margin: 5px 0px 5px 5px;
+    grid-column: 1;
+    grid-row: 1/3;
+
+}
+#kalkulator
+{
+    border: solid black 1px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    overflow:auto;
+
+}
