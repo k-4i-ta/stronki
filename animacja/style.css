@@ -1,0 +1,42 @@
+.box{
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+
+}
+
+.kloc
+{
+    background-color: cadetblue;
+    height: 200px;
+    width: 200px;
+    animation-name: prawy-lewy;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+
+    /* animation-name: animeszon;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    border-radius: 50px ; */
+}   
+/* @keyframes animeszon {
+    from { background-color: cadetblue;
+    }e
+    to {background-color: darkblue;}
+} */
+.kloc2
+{
+    display: flex;
+    align-self: flex-end;
+    justify-self: flex-end;
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+}
+@keyframes prawy-lewy {
+    0%{opacity: 100%;}
+    50% {transform: translateX(200px);}
+    100% {transform: translateX(-10px);}
+}
