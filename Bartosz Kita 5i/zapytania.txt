@@ -1,0 +1,15 @@
+1. SELECT DISTINCT rezerwacje.Data, rezerwacje.Godzina FROM rezerwacje;
+
+2. SELECT rezerwacje.Miejsce, rezerwacje.Rzad 
+FROM rezerwacje
+WHERE rezerwacje.Data = "2022-08-09" AND rezerwacje.Godzina = "18:00:00";
+
+3. SELECT COUNT(rezerwacje.Miejsce) 
+FROM rezerwacje
+WHERE rezerwacje.Data = "2022-08-09" AND rezerwacje.Godzina = "18:00:00";
+
+4.
+select rezerwacje.Rzad, rezerwacje.Miejsce,rezerwacje.Data, rezerwacje.Godzina
+FROM rezerwacje
+JOIN kasjerzy on rezerwacje.Id_kasjera = kasjerzy.Id
+WHERE kasjerzy.Imie = "Jan" and kasjerzy.Nazwisko = "Bednarski";

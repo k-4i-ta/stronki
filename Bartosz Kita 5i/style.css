@@ -1,0 +1,72 @@
+html{
+  font-family:Verdana;
+  background-color: #888888;
+  display: block;
+}
+body
+{
+  text-align: center;
+}
+.baner
+{
+  width: 100%;
+}
+.main
+{
+  display: flex;
+  flex-direction: row;
+}
+.left
+{
+  background-color: white;
+  width: 20%;
+  height: 450px;
+}
+.recht 
+{
+  background-color: #AEC6E6;
+  height: 450px;
+  width: 80%;
+  overflow: auto;
+}
+footer
+{
+  text-align: right;
+  height: 25px;
+  /*
+  position: absolute;
+  bottom: 0;*/
+}
+.recht h1
+{
+  color: blue;
+  padding-top: 50px;
+}
+li{
+  background-color: #AEC6E6;
+  width: 120px;
+  padding: 5px;
+  margin-top: 10px;
+  list-style: none;
+}
+li:hover
+{
+  background-color: #5555ff;
+}
+li
+{
+  color: #232323;
+}
+
+table
+{
+  align-items: center;
+  padding: 20px;
+}
+tr td
+{
+  border: solid black 1px;
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+}

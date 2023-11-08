@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>KINO Za rogiem</title>
+</head>
+
+  <header class="baner">
+    <img src="baner.jpg" alt="baner">
+  </header>
+<body>
+  <section class="main">
+  <section class="left">
+    <ul>
+      <li>
+        <a href="index.html">Strona główna</a>
+      </li>
+    </ul>
+    <form method="POST" action="rezerwacje.php">
+    <p>Data i godzina seansu</p>
+    <hr>
+    <input type="date" name="data" id="data">
+    <input type="time" name="godzina" id="godzina">
+    <button type="submit">Wyslij</button>
+  </form>
+  </section>
+  <section class="recht">
+    
+
+<?php
+$serwer = "localhost";
+$user = "root";
+$baza = "kino";
+$pol = mysqli_connect($serwer, $user,"",$baza);
+if(!$pol)
+{
+  echo "brak połączenia";
+}
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+  $data = $_POST['data'];
+  $godzina = $_POST['godzina'];
+
+if( empty($data) || empty($godzina))
+  {
+    echo "wypełnij dane";
+  }
+  else
+  {
+   
+    $zap2 = "SELECT rezerwacje.Miejsce, rezerwacje.Rzad 
+    FROM rezerwacje
+    WHERE rezerwacje.Data = '$data' AND rezerwacje.Godzina = '$godzina';";
+    $query = mysqli_query($pol, $zap2);
+    $lrz = mysqli_num_rows($query);
+    echo "<p>EKRAN</p>";
+    $wynik = mysqli_fetch_array($query);
+    $y = 15;
+    $x = 20;
+    echo '<table>'; 
+    for( $i = 1; $i <= $y; $i++)
+    {
+      echo "<tr>";
+      for( $j = 1; $j <= $x; $j++)
+      {
+        echo "<td>".$j."</td>";
+      }
+      echo "</tr>";
+    }
+    echo"</table>";
+
+
+    while($lrz = mysqli_fetch_array($query)) {
+
+      // "rząd: ".($lrz['Rzad'])." miejsce: ".($lrz['Miejsce']);
+    }
+ }
+}
+mysqli_close($pol);
+?>
+  </section>
+</section>
+  <footer>
+    <h5>Egzamin INF.03 - AUTOR: Kita</h5>
+  </footer>
+</body>
+</html>
